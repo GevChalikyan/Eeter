@@ -51,6 +51,32 @@ struct ContentView: View {
 //            }
 //        }
 //    }
+	
+	var body: some View {
+		VStack() {
+			Circle()
+				.fill(Color.white)
+				.shadow(radius: 15.0)
+				.padding(.horizontal, 30.0)
+				.padding(.top, 50.0)
+			
+			Button {
+				/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
+			} label: {
+				Image(systemName: "plus")
+					.resizable()
+					.frame(width: 100.0, height: 100.0)
+			}
+			.padding(.all, 20.0)
+			.background(Color.blue)
+			.foregroundStyle(Color.white)
+			.clipShape(Circle())
+			.shadow(radius: 5.0)
+			.padding(.top, 30.0)
+		
+			Spacer()
+		}
+	}
 }
 
 #Preview {

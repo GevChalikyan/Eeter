@@ -51,14 +51,29 @@ struct ContentView: View {
 //            }
 //        }
 //    }
+	@State private var percent = 0.0
+	@State private var firstWaveOffset = Angle(degrees: 0)
+	@State private var secondWaveOffset = Angle(degrees: 60)
+	
+	
 	
 	var body: some View {
 		VStack() {
-			Circle()
-				.fill(Color.white)
-				.shadow(radius: 15.0)
-				.padding(.horizontal, 30.0)
-				.padding(.top, 50.0)
+			ZStack() {
+				Circle()
+					.fill(Color.white)
+					.shadow(radius: 30.0)
+					
+				Wave(offSet: Angle(degrees: firstWaveOffset.degrees), percent: percent)
+					.fill(Color.blue)
+					.clipShape(Circle())
+				Wave(offSet: Angle(degrees: secondWaveOffset.degrees), percent: percent)
+					.fill(Color.cyan)
+					.opacity(0.8)
+					.clipShape(Circle())
+			}
+			.frame(width: 350, height: 350)
+			.padding(.top, 50.0)
 			
 			Button {
 				/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/

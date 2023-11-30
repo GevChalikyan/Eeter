@@ -53,12 +53,15 @@ struct ContentView: View {
 //    }
 	
 	var body: some View {
+		
 		VStack() {
 			Circle()
 				.fill(Color.white)
-				.shadow(radius: 15.0)
+				.shadow(radius: 30.0)
 				.padding(.horizontal, 30.0)
 				.padding(.top, 50.0)
+			
+			
 			
 			Button {
 				/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
@@ -74,6 +77,8 @@ struct ContentView: View {
 			.shadow(radius: 5.0)
 			.padding(.top, 30.0)
 		
+			
+			
 			Spacer()
 		}
 	}

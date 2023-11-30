@@ -84,7 +84,10 @@ struct ContentView: View {
 			}
 			
 			Button {
-				/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
+				//FIXME: Temp button action, replace with adding a food item
+				if (percent < 100.0) {
+					percent += 10.0
+				}
 			} label: {
 				Image(systemName: "plus")
 					.resizable()

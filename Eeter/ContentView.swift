@@ -74,6 +74,14 @@ struct ContentView: View {
 			}
 			.frame(width: 350, height: 350)
 			.padding(.top, 50.0)
+			.onAppear {
+				withAnimation(.linear(duration: 1.7).repeatForever(autoreverses: false)) {
+					self.firstWaveOffset = Angle(degrees: 360)
+				}
+				withAnimation(.linear(duration: 2.4).repeatForever(autoreverses: false)) {
+					self.secondWaveOffset = Angle(degrees: 420)
+				}
+			}
 			
 			Button {
 				/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/

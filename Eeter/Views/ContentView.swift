@@ -51,35 +51,83 @@ struct ContentView: View {
 //            }
 //        }
 //    }
+	@Namespace var addFoodItemAnimation
+	@State var isFoodItemBeingAdded = false
+	@State var isTransitionComplete = false
+	
+	let animationTime = 1.5
 	
 	var body: some View {
-		
+		if(isFoodItemBeingAdded) {
+			addFoodItemView
+				.transition(.scale(1.0))
+		}
+		else {
+			homeView
+				.transition(.scale(1.0))
+		}
+	}
+	
+	var homeView: some View {
 		VStack() {
 			Circle()
 				.fill(Color.white)
 				.shadow(radius: 30.0)
-				.padding(.horizontal, 30.0)
-				.padding(.top, 50.0)
+				.frame(width: 350.0, height: 350.0)
 			
 			
-			
-			Button {
-				/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
-			} label: {
-				Image(systemName: "plus")
-					.resizable()
-					.frame(width: 100.0, height: 100.0)
+			ZStack() {
+				Circle()
+					.fill(Color.blue)
+					.shadow(radius: 5.0)
+					.matchedGeometryEffect(id: "Button", in: addFoodItemAnimation)
+					.frame(width: 120.0, height: 120.0)
+				
+				Button {
+					withAnimation(.easeInOut(duration: animationTime)) {
+						isFoodItemBeingAdded.toggle()
+					}
+				} label: {
+					Image(systemName: "plus")
+						.resizable()
+						.matchedGeometryEffect(id: "Button Label", in: addFoodItemAnimation)
+						.frame(width: 75.0, height: 75.0)
+				}
+				.foregroundStyle(Color.white)
 			}
 			.padding(.all, 20.0)
-			.background(Color.blue)
-			.foregroundStyle(Color.white)
-			.clipShape(Circle())
-			.shadow(radius: 5.0)
 			.padding(.top, 30.0)
 		
 			
 			
 			Spacer()
+		}
+	}
+	
+	var addFoodItemView: some View {
+		ZStack() {
+			VStack() {
+				Circle()
+					.fill(Color.white)
+					.shadow(radius: 30.0)
+					.frame(width: 350.0, height: 350.0)
+				
+				Spacer()
+			}
+			Color(.blue)
+				.clipShape(Circle())
+				.aspectRatio(contentMode: .fill)
+				.matchedGeometryEffect(id: "Button", in: addFoodItemAnimation)
+				.onTapGesture {
+					withAnimation(.spring(duration: animationTime)) {
+						isFoodItemBeingAdded.toggle()
+					}
+				}
+			Image(systemName: "plus")
+				.resizable()
+				.matchedGeometryEffect(id: "Button Label", in: addFoodItemAnimation)
+				.frame(width: 0.01, height: 0.01)
+				.foregroundStyle(Color.white)
 		}
 	}
 }

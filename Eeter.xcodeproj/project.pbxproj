@@ -54,7 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				D27C783D2B0872A40077873F /* EeterApp.swift */,
-				D27C783F2B0872A40077873F /* ContentView.swift */,
+				D2BEEF432B18ABDD0024E4BA /* Views */,
 				D27C78412B0872A40077873F /* Item.swift */,
 				D27C78432B0872A60077873F /* Assets.xcassets */,
 				D27C78452B0872A60077873F /* Preview Content */,
@@ -68,6 +68,14 @@
 				D27C78462B0872A60077873F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D2BEEF432B18ABDD0024E4BA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D27C783F2B0872A40077873F /* ContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -17,7 +17,7 @@ struct WaveAnimation: View {
     
     var body: some View {
         ZStack {
-            Wave(offSet: Angle(degrees: waveOffset.degrees), percent: percent)
+			Wave(offSet: Angle(degrees: waveOffset.degrees), percent: percent)
                 .fill(Color.blue)
                 .ignoresSafeArea(.all)
         }
@@ -33,6 +33,7 @@ struct Wave: Shape {
     
     var offSet: Angle
     var percent: Double
+	var waveMod: Double = 0.015
     
     var animatableData: Double {
         get { offSet.degrees }
@@ -46,7 +47,7 @@ struct Wave: Shape {
         let highestWave = 1.00
         
         let newPercent = lowestWave + (highestWave - lowestWave) * (percent / 100)
-        let waveHeight = 0.015 * rect.height
+        let waveHeight = waveMod * rect.height
         let yOffSet = CGFloat(1 - newPercent) * (rect.height - 4 * waveHeight) + 2 * waveHeight
         let startAngle = offSet
         let endAngle = offSet + Angle(degrees: 360 + 10)

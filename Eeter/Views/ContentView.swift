@@ -51,35 +51,111 @@ struct ContentView: View {
 //            }
 //        }
 //    }
+	@Namespace var _transitionViewA
+	
+	@State var isBackgroundBlue: Bool = false
+	@State var isPlusSignVisible: Bool = true
+	
+	@State var isFoodItemBeingAdded: Bool = false
+	@State var isTransitionComplete: Bool = false
+	
+	let animationTime: CGFloat = 1.5
+	
+	let upperCircleSize: CGFloat = 350.0
+	let upperCircleShadowRadius: CGFloat = 30.0
+	let upperCircleX: CGFloat = UIScreen.main.bounds.width / 2.0
+	let upperCircleY: CGFloat = 200.0
+	
+	let lowerCircleSize: CGFloat = 120.0
+	let lowerCircleShadowRadius: CGFloat = 5.0
+	let lowerCircleX: CGFloat = UIScreen.main.bounds.width / 2.0
+	let lowerCircleY: CGFloat = 650.0
+	let lowerCircleSizeModifier: CGFloat = 3.0
 	
 	var body: some View {
-		
-		VStack() {
+		ZStack() {
 			Circle()
 				.fill(Color.white)
-				.shadow(radius: 30.0)
-				.padding(.horizontal, 30.0)
-				.padding(.top, 50.0)
+				.shadow(radius: upperCircleShadowRadius)
+				.frame(width: upperCircleSize, height: upperCircleSize)
+				.position(x: isFoodItemBeingAdded ? upperCircleX * lowerCircleSizeModifier : upperCircleX, y: isFoodItemBeingAdded ? upperCircleY + 210.0 : upperCircleY)
 			
-			
-			
-			Button {
-				/*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
-			} label: {
-				Image(systemName: "plus")
-					.resizable()
-					.frame(width: 100.0, height: 100.0)
+			if(isBackgroundBlue) {
+				Color(.blue)
+					.ignoresSafeArea(.all)
 			}
-			.padding(.all, 20.0)
-			.background(Color.blue)
-			.foregroundStyle(Color.white)
-			.clipShape(Circle())
-			.shadow(radius: 5.0)
-			.padding(.top, 30.0)
+			
+			if(isFoodItemBeingAdded && isTransitionComplete) {
+				addFoodItemView
+			}
+			else if(isFoodItemBeingAdded) {
+				transitionViewA
+					.transition(.scale(1.0))
+			}
+			else {
+				lowerCircleView
+			}
+		}
+	}
+	
+	var lowerCircleView: some View {
 		
-			
-			
-			Spacer()
+		
+		return ZStack() {
+				Circle()
+					.fill(Color.blue)
+					.shadow(radius: lowerCircleShadowRadius)
+					.matchedGeometryEffect(id: "Button", in: _transitionViewA)
+					.frame(width: lowerCircleSize, height: lowerCircleSize)
+				
+				Button {
+					withAnimation(.easeInOut(duration: animationTime / 2.0)) {
+						isPlusSignVisible = false
+					} completion: {
+						withAnimation(.easeInOut(duration: animationTime)) {
+							isFoodItemBeingAdded = true
+						}
+					}
+				} label: {
+					Image(systemName: "plus")
+						.resizable()
+						.frame(width: lowerCircleSize - 45.0, height: lowerCircleSize - 45.0)
+						.opacity(isPlusSignVisible ? 1.0 : 0.0)
+				}
+				.foregroundStyle(Color.white)
+			}
+			.position(x: lowerCircleX, y: lowerCircleY)
+	}
+	
+	var transitionViewA: some View {
+		
+		
+		return Circle()
+			.fill(Color.blue)
+			.matchedGeometryEffect(id: "Button", in: _transitionViewA)
+			.frame(width: UIScreen.main.bounds.width * lowerCircleSizeModifier, height: UIScreen.main.bounds.width * lowerCircleSizeModifier)
+			.ignoresSafeArea()
+			.onAppear() {
+				Timer.scheduledTimer(withTimeInterval: animationTime, repeats: false) { (_) in
+					isBackgroundBlue = true
+					
+					withAnimation {
+						isTransitionComplete = true
+					}
+				}
+			}
+	}
+	
+	var addFoodItemView: some View {
+		
+		
+		return ZStack() {
+			//
+			//	FIXME: Placeholder text
+			//
+			Text(":)")
+				.font(.largeTitle)
+				.foregroundStyle(Color.white)
 		}
 	}
 }

@@ -142,6 +142,7 @@ struct ContentView: View {
 					Image(systemName: "plus")
 						.resizable()
 						.frame(width: lowerCircleSize - 45.0, height: lowerCircleSize - 45.0)
+						.shadow(radius: lowerCircleShadowRadius)
 						.opacity(isPlusSignVisible ? 1.0 : 0.0)
 				}
 				.foregroundStyle(Color.white)

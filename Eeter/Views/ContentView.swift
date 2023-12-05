@@ -98,35 +98,34 @@ struct ContentView: View {
 		}
 	}
 	
-	var homeView: some View {
-		VStack() {
-			Circle()
-				.fill(Color.white)
-				.shadow(radius: 30.0)
-				.frame(width: 350.0, height: 350.0)
-			
-			
-			ZStack() {
+	var lowerCircleView: some View {
+		
+		
+		return ZStack() {
 				Circle()
 					.fill(Color.blue)
-					.shadow(radius: 5.0)
-					.matchedGeometryEffect(id: "Button", in: addFoodItemAnimation)
-					.frame(width: 120.0, height: 120.0)
+					.shadow(radius: lowerCircleShadowRadius)
+					.matchedGeometryEffect(id: "Button", in: _transitionViewA)
+					.frame(width: lowerCircleSize, height: lowerCircleSize)
 				
 				Button {
-					withAnimation(.easeInOut(duration: animationTime)) {
-						isFoodItemBeingAdded.toggle()
+					withAnimation(.easeInOut(duration: animationTime / 2.0)) {
+						isPlusSignVisible = false
+					} completion: {
+						withAnimation(.easeInOut(duration: animationTime)) {
+							isFoodItemBeingAdded = true
+						}
 					}
 				} label: {
 					Image(systemName: "plus")
 						.resizable()
-						.matchedGeometryEffect(id: "Button Label", in: addFoodItemAnimation)
-						.frame(width: 75.0, height: 75.0)
+						.frame(width: lowerCircleSize - 45.0, height: lowerCircleSize - 45.0)
+						.opacity(isPlusSignVisible ? 1.0 : 0.0)
 				}
 				.foregroundStyle(Color.white)
 			}
-			.padding(.all, 20.0)
-			.padding(.top, 30.0)
+			.position(x: lowerCircleX, y: lowerCircleY)
+	}
 		
 			
 			

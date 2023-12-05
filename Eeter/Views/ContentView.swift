@@ -147,28 +147,14 @@ struct ContentView: View {
 	}
 	
 	var addFoodItemView: some View {
-		ZStack() {
-			VStack() {
-				Circle()
-					.fill(Color.white)
-					.shadow(radius: 30.0)
-					.frame(width: 350.0, height: 350.0)
-				
-				Spacer()
-			}
-			Color(.blue)
-				.clipShape(Circle())
-				.aspectRatio(contentMode: .fill)
-				.matchedGeometryEffect(id: "Button", in: addFoodItemAnimation)
-				.onTapGesture {
-					withAnimation(.spring(duration: animationTime)) {
-						isFoodItemBeingAdded.toggle()
-					}
-				}
-			Image(systemName: "plus")
-				.resizable()
-				.matchedGeometryEffect(id: "Button Label", in: addFoodItemAnimation)
-				.frame(width: 0.01, height: 0.01)
+		
+		
+		return ZStack() {
+			//
+			//	FIXME: Placeholder text
+			//
+			Text(":)")
+				.font(.largeTitle)
 				.foregroundStyle(Color.white)
 		}
 	}

@@ -53,6 +53,10 @@ struct ContentView: View {
 //    }
 	@Namespace var _transitionViewA
 	
+	@State private var percent = 0.0
+	@State private var firstWaveOffset = Angle(degrees: 0)
+	@State private var secondWaveOffset = Angle(degrees: 60)
+	
 	@State var isBackgroundBlue: Bool = false
 	@State var isPlusSignVisible: Bool = true
 	
@@ -74,11 +78,29 @@ struct ContentView: View {
 	
 	var body: some View {
 		ZStack() {
-			Circle()
-				.fill(Color.white)
-				.shadow(radius: upperCircleShadowRadius)
-				.frame(width: upperCircleSize, height: upperCircleSize)
-				.position(x: isFoodItemBeingAdded ? upperCircleX * lowerCircleSizeModifier : upperCircleX, y: isFoodItemBeingAdded ? upperCircleY + 210.0 : upperCircleY)
+			ZStack() {
+				Circle()
+					.fill(Color.white)
+					.shadow(radius: upperCircleShadowRadius)
+				
+				Wave(offSet: Angle(degrees: firstWaveOffset.degrees), percent: percent)
+					.fill(Color.blue)
+					.clipShape(Circle())
+				Wave(offSet: Angle(degrees: secondWaveOffset.degrees), percent: percent)
+					.fill(Color.cyan)
+					.opacity(0.8)
+					.clipShape(Circle())
+			}
+			.frame(width: upperCircleSize, height: upperCircleSize)
+			.position(x: isFoodItemBeingAdded ? upperCircleX * lowerCircleSizeModifier : upperCircleX, y: isFoodItemBeingAdded ? upperCircleY + 210.0 : upperCircleY)
+			.onAppear {
+				withAnimation(.linear(duration: animationTime).repeatForever(autoreverses: false)) {
+					firstWaveOffset += Angle(degrees: 360)
+				}
+				withAnimation(.linear(duration: (animationTime * 2.0) + 0.1).repeatForever(autoreverses: false)) {
+					secondWaveOffset += Angle(degrees: 360)
+				}
+			}
 			
 			if(isBackgroundBlue) {
 				Color(.blue)

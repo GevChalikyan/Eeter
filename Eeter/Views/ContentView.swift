@@ -55,7 +55,24 @@ struct ContentView: View {
 	@State var isFoodItemBeingAdded = false
 	@State var isTransitionComplete = false
 	
-	let animationTime = 1.5
+	@State var isBackgroundBlue: Bool = false
+	@State var isPlusSignVisible: Bool = true
+	
+	@State var isFoodItemBeingAdded: Bool = false
+	@State var isTransitionComplete: Bool = false
+	
+	let animationTime: CGFloat = 1.5
+	
+	let upperCircleSize: CGFloat = 350.0
+	let upperCircleShadowRadius: CGFloat = 30.0
+	let upperCircleX: CGFloat = UIScreen.main.bounds.width / 2.0
+	let upperCircleY: CGFloat = 200.0
+	
+	let lowerCircleSize: CGFloat = 120.0
+	let lowerCircleShadowRadius: CGFloat = 5.0
+	let lowerCircleX: CGFloat = UIScreen.main.bounds.width / 2.0
+	let lowerCircleY: CGFloat = 650.0
+	let lowerCircleSizeModifier: CGFloat = 3.0
 	
 	var body: some View {
 		if(isFoodItemBeingAdded) {

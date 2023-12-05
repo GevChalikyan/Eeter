@@ -71,7 +71,7 @@ struct ContentView: View {
 	let upperCircleY: CGFloat = 200.0
 	
 	let lowerCircleSize: CGFloat = 120.0
-	let lowerCircleShadowRadius: CGFloat = 5.0
+	let lowerCircleShadowRadius: CGFloat = 10.0
 	let lowerCircleX: CGFloat = UIScreen.main.bounds.width / 2.0
 	let lowerCircleY: CGFloat = 650.0
 	let lowerCircleSizeModifier: CGFloat = 3.0

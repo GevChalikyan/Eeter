@@ -12,6 +12,7 @@
 		D27C78422B0872A40077873F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27C78412B0872A40077873F /* Item.swift */; };
 		D27C78442B0872A60077873F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27C78432B0872A60077873F /* Assets.xcassets */; };
 		D27C78472B0872A60077873F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27C78462B0872A60077873F /* Preview Assets.xcassets */; };
+		D2BEEF3E2B13F3150024E4BA /* WaveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEEF3D2B13F3150024E4BA /* WaveAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		D27C78412B0872A40077873F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D27C78432B0872A60077873F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D27C78462B0872A60077873F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D2BEEF3D2B13F3150024E4BA /* WaveAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveAnimation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				D27C783D2B0872A40077873F /* EeterApp.swift */,
 				D2BEEF432B18ABDD0024E4BA /* Views */,
 				D27C78412B0872A40077873F /* Item.swift */,
+				D2BEEF3D2B13F3150024E4BA /* WaveAnimation.swift */,
 				D27C78432B0872A60077873F /* Assets.xcassets */,
 				D27C78452B0872A60077873F /* Preview Content */,
 			);
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D27C78402B0872A40077873F /* ContentView.swift in Sources */,
+				D2BEEF3E2B13F3150024E4BA /* WaveAnimation.swift in Sources */,
 				D27C78422B0872A40077873F /* Item.swift in Sources */,
 				D27C783E2B0872A40077873F /* EeterApp.swift in Sources */,
 			);

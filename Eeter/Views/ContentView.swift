@@ -51,9 +51,7 @@ struct ContentView: View {
 //            }
 //        }
 //    }
-	@Namespace var addFoodItemAnimation
-	@State var isFoodItemBeingAdded = false
-	@State var isTransitionComplete = false
+	@Namespace var _transitionViewA
 	
 	@State var isBackgroundBlue: Bool = false
 	@State var isPlusSignVisible: Bool = true

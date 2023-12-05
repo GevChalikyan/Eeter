@@ -126,11 +126,24 @@ struct ContentView: View {
 			}
 			.position(x: lowerCircleX, y: lowerCircleY)
 	}
+	
+	var transitionViewA: some View {
 		
-			
-			
-			Spacer()
-		}
+		
+		return Circle()
+			.fill(Color.blue)
+			.matchedGeometryEffect(id: "Button", in: _transitionViewA)
+			.frame(width: UIScreen.main.bounds.width * lowerCircleSizeModifier, height: UIScreen.main.bounds.width * lowerCircleSizeModifier)
+			.ignoresSafeArea()
+			.onAppear() {
+				Timer.scheduledTimer(withTimeInterval: animationTime, repeats: false) { (_) in
+					isBackgroundBlue = true
+					
+					withAnimation {
+						isTransitionComplete = true
+					}
+				}
+			}
 	}
 	
 	var addFoodItemView: some View {

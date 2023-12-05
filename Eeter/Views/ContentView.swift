@@ -73,13 +73,28 @@ struct ContentView: View {
 	let lowerCircleSizeModifier: CGFloat = 3.0
 	
 	var body: some View {
-		if(isFoodItemBeingAdded) {
-			addFoodItemView
-				.transition(.scale(1.0))
-		}
-		else {
-			homeView
-				.transition(.scale(1.0))
+		ZStack() {
+			Circle()
+				.fill(Color.white)
+				.shadow(radius: upperCircleShadowRadius)
+				.frame(width: upperCircleSize, height: upperCircleSize)
+				.position(x: isFoodItemBeingAdded ? upperCircleX * lowerCircleSizeModifier : upperCircleX, y: isFoodItemBeingAdded ? upperCircleY + 210.0 : upperCircleY)
+			
+			if(isBackgroundBlue) {
+				Color(.blue)
+					.ignoresSafeArea(.all)
+			}
+			
+			if(isFoodItemBeingAdded && isTransitionComplete) {
+				addFoodItemView
+			}
+			else if(isFoodItemBeingAdded) {
+				transitionViewA
+					.transition(.scale(1.0))
+			}
+			else {
+				lowerCircleView
+			}
 		}
 	}
 	

@@ -98,6 +98,16 @@ struct ContentView: View {
 		}
 	}
 	
+	var fullScreenBlueCircle: some View {
+		
+		
+		return Circle()
+			.fill(Color.blue)
+			.matchedGeometryEffect(id: "Button", in: _transitionViewA)
+			.frame(width: UIScreen.main.bounds.width * lowerCircleSizeModifier, height: UIScreen.main.bounds.width * lowerCircleSizeModifier)
+			.ignoresSafeArea()
+	}
+	
 	var upperCircleView: some View {
 		
 		
@@ -159,11 +169,7 @@ struct ContentView: View {
 	var transitionViewA: some View {
 		
 		
-		return Circle()
-			.fill(Color.blue)
-			.matchedGeometryEffect(id: "Button", in: _transitionViewA)
-			.frame(width: UIScreen.main.bounds.width * lowerCircleSizeModifier, height: UIScreen.main.bounds.width * lowerCircleSizeModifier)
-			.ignoresSafeArea()
+		return fullScreenBlueCircle
 			.onAppear() {
 				Timer.scheduledTimer(withTimeInterval: animationTime, repeats: false) { (_) in
 					isBackgroundBlue = true

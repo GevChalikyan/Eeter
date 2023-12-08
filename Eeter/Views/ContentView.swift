@@ -59,9 +59,11 @@ struct ContentView: View {
 	
 	@State var isBackgroundBlue: Bool = false
 	@State var isPlusSignVisible: Bool = true
+	@State var isVisible_addFoodItemView: Bool = true
 	
 	@State var isFoodItemBeingAdded: Bool = false
 	@State var isTransitionComplete: Bool = false
+	@State var isFoodItemAdded: Bool = false
 	
 	let animationTime: CGFloat = 1.5
 	
@@ -85,7 +87,11 @@ struct ContentView: View {
 					.ignoresSafeArea(.all)
 			}
 			
-			if(isFoodItemBeingAdded && isTransitionComplete) {
+			if(isFoodItemAdded) {
+				transitionViewB
+					.transition(.scale(1.0))
+			}
+			else if(isFoodItemBeingAdded && isTransitionComplete) {
 				addFoodItemView
 			}
 			else if(isFoodItemBeingAdded) {
@@ -177,6 +183,22 @@ struct ContentView: View {
 					withAnimation {
 						isTransitionComplete = true
 					}
+				}
+			}
+	}
+	
+	var transitionViewB: some View {
+		
+		
+		return fullScreenBlueCircle
+			.onAppear() {
+				isBackgroundBlue = false
+				
+				withAnimation(.easeInOut(duration: animationTime)) {
+					isTransitionComplete = false
+					isFoodItemBeingAdded = false
+					isFoodItemAdded = false
+					isFrameOversized = false
 				}
 			}
 	}

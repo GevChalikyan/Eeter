@@ -182,6 +182,7 @@ struct ContentView: View {
 			.onAppear() {
 				Timer.scheduledTimer(withTimeInterval: animationTime, repeats: false) { (_) in
 					isBackgroundBlue = true
+					isVisible_addFoodItemView = true
 					
 					withAnimation {
 						isTransitionComplete = true

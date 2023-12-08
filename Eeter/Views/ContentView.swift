@@ -60,6 +60,7 @@ struct ContentView: View {
 	@State var isBackgroundBlue: Bool = false
 	@State var isPlusSignVisible: Bool = true
 	@State var isVisible_addFoodItemView: Bool = true
+	@State var isFrameOversized: Bool = false
 	
 	@State var isFoodItemBeingAdded: Bool = false
 	@State var isTransitionComplete: Bool = false
@@ -131,7 +132,7 @@ struct ContentView: View {
 				   .clipShape(Circle())
 		   }
 		   .frame(width: upperCircleSize, height: upperCircleSize)
-		   .position(x: isFoodItemBeingAdded ? upperCircleX * lowerCircleSizeModifier : upperCircleX, y: isFoodItemBeingAdded ? upperCircleY + 210.0 : upperCircleY)
+		   .position(x: isFrameOversized ? upperCircleX * lowerCircleSizeModifier : upperCircleX, y: isFrameOversized ? upperCircleY + 210.0 : upperCircleY)
 		   .onAppear {
 			   withAnimation(.linear(duration: animationTime).repeatForever(autoreverses: false)) {
 				   firstWaveOffset += Angle(degrees: 360)
@@ -157,6 +158,7 @@ struct ContentView: View {
 						isPlusSignVisible = false
 					} completion: {
 						withAnimation(.easeInOut(duration: animationTime)) {
+							isFrameOversized = true
 							isFoodItemBeingAdded = true
 						}
 					}

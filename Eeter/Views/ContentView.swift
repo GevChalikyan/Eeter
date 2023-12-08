@@ -101,6 +101,7 @@ struct ContentView: View {
 			}
 			else {
 				lowerCircleView
+					.transition(.scale(1.0))
 			}
 		}
 	}

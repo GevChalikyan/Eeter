@@ -212,9 +212,31 @@ struct ContentView: View {
 			//
 			//	FIXME: Placeholder text
 			//
-			Text(":)")
-				.font(.largeTitle)
+			VStack() {
+				Button() {
+					withAnimation(.easeInOut(duration: animationTime / 2.0)) {
+						isVisible_addFoodItemView = false
+					} completion: {
+						withAnimation(.easeInOut(duration: animationTime)) {
+							isFoodItemAdded = true
+						}
+						Timer.scheduledTimer(withTimeInterval: animationTime, repeats: false) { (_) in
+							withAnimation {
+								isPlusSignVisible = true
+							}
+						}
+					}
+				} label: {
+					Image(systemName: "plus")
+						.resizable()
+						.frame(width: lowerCircleSize - 45.0, height: lowerCircleSize - 45.0)
+						.shadow(radius: lowerCircleShadowRadius)
+						
+				}
 				.foregroundStyle(Color.white)
+			}
+			.opacity(isVisible_addFoodItemView ? 1.0 : 0.0)
+			
 		}
 	}
 }

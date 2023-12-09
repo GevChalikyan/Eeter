@@ -57,27 +57,27 @@ struct ContentView: View {
 	@State private var firstWaveOffset = Angle(degrees: 0)
 	@State private var secondWaveOffset = Angle(degrees: 60)
 	
-	@State var isBackgroundBlue: Bool = false
-	@State var isPlusSignVisible: Bool = true
-	@State var isVisible_addFoodItemView: Bool = true
-	@State var isFrameOversized: Bool = false
+	@State private var isBackgroundBlue: Bool = false
+	@State private var isPlusSignVisible: Bool = true
+	@State private var isVisible_addFoodItemView: Bool = true
+	@State private var isFrameOversized: Bool = false
 	
-	@State var isFoodItemBeingAdded: Bool = false
-	@State var isTransitionComplete: Bool = false
-	@State var isFoodItemAdded: Bool = false
+	@State private var isFoodItemBeingAdded: Bool = false
+	@State private var isTransitionComplete: Bool = false
+	@State private var isFoodItemAdded: Bool = false
 	
-	let animationTime: CGFloat = 1.5
+	private let animationTime: CGFloat = 1.5
 	
-	let upperCircleSize: CGFloat = 350.0
-	let upperCircleShadowRadius: CGFloat = 30.0
-	let upperCircleX: CGFloat = UIScreen.main.bounds.width / 2.0
-	let upperCircleY: CGFloat = 200.0
+	private let upperCircleSize: CGFloat = 350.0
+	private let upperCircleShadowRadius: CGFloat = 30.0
+	private let upperCircleX: CGFloat = UIScreen.main.bounds.width / 2.0
+	private let upperCircleY: CGFloat = 200.0
 	
-	let lowerCircleSize: CGFloat = 120.0
-	let lowerCircleShadowRadius: CGFloat = 10.0
-	let lowerCircleX: CGFloat = UIScreen.main.bounds.width / 2.0
-	let lowerCircleY: CGFloat = 650.0
-	let lowerCircleSizeModifier: CGFloat = 3.0
+	private let lowerCircleSize: CGFloat = 120.0
+	private let lowerCircleShadowRadius: CGFloat = 10.0
+	private let lowerCircleX: CGFloat = UIScreen.main.bounds.width / 2.0
+	private let lowerCircleY: CGFloat = 650.0
+	private let lowerCircleSizeModifier: CGFloat = 3.0
 	
 	var body: some View {
 		ZStack() {

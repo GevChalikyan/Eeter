@@ -79,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				D27C783F2B0872A40077873F /* ContentView.swift */,
-				D2BEEF452B2437A60024E4BA /* NumberedCircle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -88,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				D2BEEF3D2B13F3150024E4BA /* WaveAnimation.swift */,
+				D2BEEF452B2437A60024E4BA /* NumberedCircle.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

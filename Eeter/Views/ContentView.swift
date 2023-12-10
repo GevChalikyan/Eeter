@@ -232,6 +232,9 @@ struct ContentView: View {
 							Button() {
 								caloriesToAdd *= 10
 								caloriesToAdd += num
+								if(caloriesToAdd > 10_000) {
+									caloriesToAdd = 10_000
+								}
 							}label: {
 								NumberedCircle(num: num)
 									.padding(.vertical, 10.0)

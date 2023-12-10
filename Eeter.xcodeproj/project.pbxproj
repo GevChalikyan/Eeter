@@ -13,6 +13,7 @@
 		D27C78442B0872A60077873F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27C78432B0872A60077873F /* Assets.xcassets */; };
 		D27C78472B0872A60077873F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D27C78462B0872A60077873F /* Preview Assets.xcassets */; };
 		D2BEEF3E2B13F3150024E4BA /* WaveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEEF3D2B13F3150024E4BA /* WaveAnimation.swift */; };
+		D2BEEF462B2437A60024E4BA /* NumberedCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEEF452B2437A60024E4BA /* NumberedCircle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		D27C78432B0872A60077873F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D27C78462B0872A60077873F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D2BEEF3D2B13F3150024E4BA /* WaveAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveAnimation.swift; sourceTree = "<group>"; };
+		D2BEEF452B2437A60024E4BA /* NumberedCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberedCircle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +58,9 @@
 			isa = PBXGroup;
 			children = (
 				D27C783D2B0872A40077873F /* EeterApp.swift */,
+				D2BEEF4A2B254B090024E4BA /* Data */,
+				D2BEEF472B244EF80024E4BA /* Helpers */,
 				D2BEEF432B18ABDD0024E4BA /* Views */,
-				D27C78412B0872A40077873F /* Item.swift */,
-				D2BEEF3D2B13F3150024E4BA /* WaveAnimation.swift */,
 				D27C78432B0872A60077873F /* Assets.xcassets */,
 				D27C78452B0872A60077873F /* Preview Content */,
 			);
@@ -77,8 +79,25 @@
 			isa = PBXGroup;
 			children = (
 				D27C783F2B0872A40077873F /* ContentView.swift */,
+				D2BEEF452B2437A60024E4BA /* NumberedCircle.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D2BEEF472B244EF80024E4BA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D2BEEF3D2B13F3150024E4BA /* WaveAnimation.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D2BEEF4A2B254B090024E4BA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D27C78412B0872A40077873F /* Item.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +174,7 @@
 				D2BEEF3E2B13F3150024E4BA /* WaveAnimation.swift in Sources */,
 				D27C78422B0872A40077873F /* Item.swift in Sources */,
 				D27C783E2B0872A40077873F /* EeterApp.swift in Sources */,
+				D2BEEF462B2437A60024E4BA /* NumberedCircle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

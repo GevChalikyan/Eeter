@@ -19,6 +19,7 @@ func NumberedCircle(num: Int = 0) -> some View {
 		Text("\(num)")
 			.font(.largeTitle)
 			.fontWeight(.bold)
+			.foregroundColor(Color.black)
 	}
 	.frame(width: circleDiameter, height: circleDiameter)
 }

@@ -53,9 +53,13 @@ struct ContentView: View {
 //    }
 	@Namespace var _transitionViewA
 	
-	@State private var percent = 0.0
-	@State private var firstWaveOffset = Angle(degrees: 0)
-	@State private var secondWaveOffset = Angle(degrees: 60)
+	@State private var caloriesToAdd: Int = 0
+	@State private var totalCalories: CGFloat = 0.0
+	@State private var dailyNutritionalValue: CGFloat = 2000.0
+	
+	@State private var percent: CGFloat = 0.0
+	@State private var firstWaveOffset = Angle(degrees: 0.0)
+	@State private var secondWaveOffset = Angle(degrees: 60.0)
 	
 	@State private var isBackgroundBlue: Bool = false
 	@State private var isPlusSignVisible: Bool = true
@@ -111,6 +115,7 @@ struct ContentView: View {
 		
 		return Circle()
 			.fill(Color.blue)
+			.shadow(radius: lowerCircleShadowRadius)
 			.matchedGeometryEffect(id: "Button", in: _transitionViewA)
 			.frame(width: UIScreen.main.bounds.width * lowerCircleSizeModifier, height: UIScreen.main.bounds.width * lowerCircleSizeModifier)
 			.ignoresSafeArea()
@@ -157,6 +162,7 @@ struct ContentView: View {
 				Button {
 					withAnimation(.easeInOut(duration: animationTime / 2.0)) {
 						isPlusSignVisible = false
+						caloriesToAdd = 0
 					} completion: {
 						withAnimation(.easeInOut(duration: animationTime)) {
 							isFrameOversized = true
@@ -211,31 +217,93 @@ struct ContentView: View {
 		
 		
 		return ZStack() {
-			//
-			//	FIXME: Placeholder text
-			//
 			VStack() {
-				Button() {
-					withAnimation(.easeInOut(duration: animationTime / 2.0)) {
-						isVisible_addFoodItemView = false
-					} completion: {
-						withAnimation(.easeInOut(duration: animationTime)) {
-							isFoodItemAdded = true
-						}
-						Timer.scheduledTimer(withTimeInterval: animationTime, repeats: false) { (_) in
-							withAnimation {
-								isPlusSignVisible = true
+				
+				Text("\(caloriesToAdd)")
+					.font(.system(size: 64))
+					.fontWeight(.bold)
+					.foregroundStyle(Color.white)
+					.multilineTextAlignment(.center)
+				
+				ForEach(0...2, id: \.self) { row in
+					HStack() {
+						Spacer()
+						ForEach((1 + row * 3)...(3 + row * 3), id: \.self) { num in
+							Button() {
+								caloriesToAdd *= 10
+								caloriesToAdd += num
+							}label: {
+								NumberedCircle(num: num)
+									.padding(.vertical, 10.0)
 							}
+							
+							Spacer()
 						}
 					}
-				} label: {
-					Image(systemName: "plus")
-						.resizable()
-						.frame(width: lowerCircleSize - 45.0, height: lowerCircleSize - 45.0)
-						.shadow(radius: lowerCircleShadowRadius)
-						
 				}
-				.foregroundStyle(Color.white)
+				
+				HStack() {
+					Spacer()
+					
+					Button() {
+						caloriesToAdd *= 10
+					}label: {
+						NumberedCircle(num: 0)
+					}
+					
+					Spacer()
+					
+					ZStack() {
+						Circle()
+							.fill(Color.blue)
+							.frame(width: 100.0, height: 100.0)
+						
+						Button() {
+							totalCalories += CGFloat(caloriesToAdd)
+							percent = (totalCalories / dailyNutritionalValue) * 100.0
+							
+							withAnimation(.easeInOut(duration: animationTime / 2.0)) {
+								isVisible_addFoodItemView = false
+							} completion: {
+								withAnimation(.easeInOut(duration: animationTime)) {
+									isFoodItemAdded = true
+								}
+								Timer.scheduledTimer(withTimeInterval: animationTime, repeats: false) { (_) in
+									withAnimation {
+										isPlusSignVisible = true
+									}
+								}
+							}
+						} label: {
+							Image(systemName: "plus")
+								.resizable()
+								.frame(width: lowerCircleSize - 45.0, height: lowerCircleSize - 45.0)
+								.shadow(radius: lowerCircleShadowRadius)
+						}
+						.foregroundStyle(Color.white)
+					}
+					
+					Spacer()
+					
+					ZStack() {
+						Circle()
+							.fill(Color.blue)
+							.frame(width: 100.0, height: 100.0)
+
+						Button() {
+							caloriesToAdd /= 10
+						} label: {
+							Image(systemName: "delete.left.fill")
+								.resizable()
+								.foregroundStyle(Color.gray)
+								.frame(width: 45.0, height: 35.0)
+								.shadow(radius: lowerCircleShadowRadius)
+						}
+					}
+					
+					Spacer()
+				}
+				.padding(.top, 10.0)
 			}
 			.opacity(isVisible_addFoodItemView ? 1.0 : 0.0)
 			

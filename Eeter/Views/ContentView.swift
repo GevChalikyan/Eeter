@@ -314,6 +314,12 @@ struct ContentView: View {
 			
 		}
 	}
+	
+	func addFoodItem() {
+		let item = Item(data: totalCalories, timestamp: Date.now)
+		
+		context.insert(item)
+	}
 }
 
 #Preview {

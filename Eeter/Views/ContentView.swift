@@ -51,6 +51,8 @@ struct ContentView: View {
 //            }
 //        }
 //    }
+	@Environment(\.modelContext) private var context
+	
 	@Namespace var _transitionViewA
 	
 	@State private var caloriesToAdd: Int = 0

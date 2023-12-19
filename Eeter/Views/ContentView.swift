@@ -73,6 +73,7 @@ struct ContentView: View {
 	@State private var isFoodItemAdded: Bool = false
 	
 	private let animationTime: CGFloat = 1.5
+	private let maxTotalCalories: CGFloat = 10_000.0
 	
 	private let upperCircleSize: CGFloat = 350.0
 	private let upperCircleShadowRadius: CGFloat = 30.0
@@ -234,8 +235,8 @@ struct ContentView: View {
 							Button() {
 								caloriesToAdd *= 10
 								caloriesToAdd += num
-								if(caloriesToAdd > 10_000) {
-									caloriesToAdd = 10_000
+								if(caloriesToAdd > maxTotalCalories) {
+									caloriesToAdd = maxTotalCalories
 								}
 							}label: {
 								NumberedCircle(num: num)
@@ -265,8 +266,8 @@ struct ContentView: View {
 						
 						Button() {
 							totalCalories += CGFloat(caloriesToAdd)
-							if(totalCalories > 10_000) {
-								totalCalories = 10_000
+							if(totalCalories > maxTotalCalories) {
+								totalCalories = maxTotalCalories
 							}
 							percent = (totalCalories / dailyNutritionalValue) * 100.0
 							

@@ -265,6 +265,9 @@ struct ContentView: View {
 						
 						Button() {
 							totalCalories += CGFloat(caloriesToAdd)
+							if(totalCalories > 10_000) {
+								totalCalories = 10_000
+							}
 							percent = (totalCalories / dailyNutritionalValue) * 100.0
 							
 							withAnimation(.easeInOut(duration: animationTime / 2.0)) {
